@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicons-->
+        <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='images/favicon/apple-touch-icon-152x152.png') }}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/favicon/mstile-144x144.png') }}">
+        <link rel="icon" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}" sizes="32x32">
+        <title>QuickShare</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Materialize core CSS -->
+        <link href="{{ url_for('static', filename='materialize/css/materialize.css') }}" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="assets/js/html5shiv.js"></script>
+            <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="/" class="brand-logo center">QuickShare</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/f/{{ message_id }}">Show raw</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="row"> 
+            <div class="input-field col s12"> 
+                <textarea id="message" class="materialize-textarea" readonly>{{ message }}</textarea>                 
+                <label for="message">Message #{{ message_id }}</label>                 
+            </div>             
+        </div>
+        <div class="divider hide-on-med-and-down"></div>
+        <ul class="collapsible hide-on-med-and-down" data-collapsible="accordion"> 
+            <li> 
+                <div class="collapsible-header">
+                    <i class="mdi-action-lock"></i>You and the author of this message will stay anonymous
+                </div>                 
+                <div class="collapsible-body">
+                    <p>Our main goal is to provide anonymous message and note sharing service. We don't sell your data to anyone, we don't keep logs about who made any message</p>
+                </div>                 
+            </li>                                       
+        </ul>
+        <!-- Materialize core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='materialize/js/materialize.js') }}"></script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>

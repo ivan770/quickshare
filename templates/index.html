@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicons-->
+        <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='images/favicon/apple-touch-icon-152x152.png') }}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/favicon/mstile-144x144.png') }}">
+        <link rel="icon" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}" sizes="32x32">
+        <title>QuickShare</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Materialize core CSS -->
+        <link href="{{ url_for('static', filename='materialize/css/materialize.css') }}" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="assets/js/html5shiv.js"></script>
+            <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <nav> 
+            <div class="nav-wrapper"> 
+                <a href="/" class="brand-logo center">QuickShare</a> 
+            </div>
+        </nav>
+        <form action="{{ url_for('publish') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="row"> 
+                <div class="input-field col s12"> 
+                    <textarea id="message" class="materialize-textarea" name="message" data-length="120"></textarea>                     
+                    <label for="message">Your message</label>                     
+                </div>                 
+            </div>             
+            <center>
+                <input type="submit" class="btn red" value="Share">
+            </center>
+        </form>
+        <!-- Materialize core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='materialize/js/materialize.js') }}"></script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        {%if error == "1" %}
+                <script>Materialize.toast('Too big message!', 5000)</script>
+                {%elif error == "2" %}
+                <script>Materialize.toast('Too small message!', 5000)</script>
+            {% endif %}
+    </body>
+</html>
