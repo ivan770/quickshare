@@ -8,7 +8,7 @@ from flask_wtf.csrf import CSRFProtect, CSRFError
 from flask import send_from_directory
 from pathlib import Path
 import string
-import random 
+import random
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -35,6 +35,9 @@ def internal_server_error(e):
 
 @app.route('/')
 def index():
+    if request.is_secure == False:
+        if request.args.get("ignore") != "1":
+            return render_template('security.html')
     error = None
     error = request.args.get("error")
     if error is None:
