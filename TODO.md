@@ -1,0 +1,2 @@
+- [ ] Add database support
+- [ ] Make QuickShare own public server
