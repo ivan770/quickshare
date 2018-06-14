@@ -3,6 +3,8 @@ QuickShare is a Flask-based web application, that allow users to make anonymous 
 
 It's interface is simple and responsible (based on [Materialize](http://materializecss.com/)), and can be used on any device.
 
+Now available without local installation: [QuickShare](https://qshare.ga/)
+
 ## Installation
 (this tutorial uses Flask internal server, which can be insecure for production use)
 1. Install Python 3 for your OS.
